@@ -21,7 +21,7 @@ install.packages("dqsample")
 
 ## Example
 
-When sampling man random integers the number of odd and even numbers
+When sampling many random integers the number of odd and even numbers
 should be about the same. This is not the case with `base::sample`:
 
 ``` r

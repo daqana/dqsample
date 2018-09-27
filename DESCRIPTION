@@ -4,7 +4,7 @@ Title: Bias-Free Alternative to R's 'sample' Function
 Version: 0.0.1
 Author: Ralf Stubner
 Maintainer: Ralf Stubner <ralf.stubner@daqana.com>
-Description: The 'sample' function uses a slightly biased algorithm for
+Description: The 'base::sample' function uses a slightly biased algorithm for
   creating random integers within a given range. As an alternative the
   algorithm suggested by Daniel Lemire (2018, <arXiv:1805.1094>) is used.
 License: GPL (>= 2)
@@ -14,5 +14,5 @@ Suggests:
     testthat
 Encoding: UTF-8
 RoxygenNote: 6.1.0
-URL: https://github.com/daqana/dqsample
+URL: https://www.daqana.org/dqsample, https://github.com/daqana/dqsample
 BugReports: https://github.com/daqana/dqsample/issues
