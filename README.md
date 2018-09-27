@@ -32,28 +32,29 @@ install.packages("dqsample")
 
 ## Example
 
-When sampling many random integers the number of odd and even numbers
-should be about the same. This is not the case with `base::sample`:
+When sampling many random integers the density of odd and even numbers
+should be roughly equal and constant. This is not the case with
+`base::sample`:
 
 ``` r
 m <- 2/5 * 2^32
-x <- base::sample(m, 1000000, replace = TRUE)
-table(x %% 2)
-#> 
-#>      0      1 
-#> 400633 599367
+x <- base::sample(floor(m), 1000000, replace = TRUE)
+plot(density(x[x %% 2 == 0]), main = "base::sample")
+lines(density(x[x %% 2 == 1]), col = 2)
 ```
+
+<img src="man/figures/README-base-1.png" width="100%" />
 
 While it is the case with `dqsample::sample`:
 
 ``` r
 m <- 2/5 * 2^32
-x <- dqsample::sample(m, 1000000, replace = TRUE)
-table(x %% 2)
-#> 
-#>      0      1 
-#> 498957 501043
+x <- dqsample::sample(floor(m), 1000000, replace = TRUE)
+plot(density(x[x %% 2 == 0]), main = "dqsample::sample")
+lines(density(x[x %% 2 == 1]), col = 2)
 ```
+
+<img src="man/figures/README-dqsample-1.png" width="100%" />
 
 This particular sample for the bias was found by [Duncan
 Murdoch](https://stat.ethz.ch/pipermail/r-devel/2018-September/076827.html).
