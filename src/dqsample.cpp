@@ -1,25 +1,22 @@
-// [[Rcpp::plugins(cpp11)]]
-#include <cstdint>
-#include <Rcpp.h>
+// Copyright 2018 Ralf Stubner (daqana GmbH)
+//
+// This file is part of dqsample.
+//
+// dqsample is free software: you can redistribute it and/or modify it
+// under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 2 of the License, or
+// (at your option) any later version.
+//
+// dqsample is distributed in the hope that it will be useful, but
+// WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with dqsample.  If not, see <http://www.gnu.org/licenses/>.
 
-/* Daniel Lemire
- Fast Random Integer Generation in an Interval
- https://arxiv.org/abs/1805.10941
- */
-uint32_t  nearlydivisionless32(uint32_t s, uint32_t (*random32)(void)) {
-  uint32_t x = random32();
-  uint64_t m = (uint64_t) x * (uint64_t) s;
-  uint32_t l = (uint32_t) m;
-  if (l < s) {
-    uint32_t t = -s % s;
-    while (l < t) {
-      x = random32();
-      m = (uint64_t) x * (uint64_t) s;
-      l = (uint32_t) m;
-    }
-  }
-  return m >> 32;
-}
+#include <Rcpp.h>
+#include <dqsample.h>
 
 uint32_t random32() {
   return R::runif(0, 1) * 4294967296; /* 2^32 */
@@ -30,13 +27,13 @@ Rcpp::IntegerVector sample_int(int n, int size, bool replace = false) {
   Rcpp::IntegerVector result(Rcpp::no_init(size));
   if (replace) {
     for (int i = 0; i < size; ++i)
-      result[i] = nearlydivisionless32(n, random32) + 1;
+        result[i] = bounded_rand32(random32, n) + 1;
   } else {
     Rcpp::IntegerVector tmp(Rcpp::no_init(n));
     for (int i = 0; i < n; ++i)
       tmp[i] = i;
     for (int i = 0; i < size; ++i) {
-      int j = nearlydivisionless32(n, random32);
+        int j = bounded_rand32(random32, n);
       result[i] = tmp[j] + 1;
       tmp[j] = tmp[--n];
     }
