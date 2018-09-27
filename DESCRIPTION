@@ -2,8 +2,11 @@ Package: dqsample
 Type: Package
 Title: Bias-Free Alternative to R's 'sample' Function
 Version: 0.0.1
-Author: Ralf Stubner
-Maintainer: Ralf Stubner <ralf.stubner@daqana.com>
+Authors@R: c(
+    person("Ralf", "Stubner", email = "ralf.stubner@daqana.com", role = c("aut", "cre")),
+    person("daqana GmbH", role = "cph"),
+    person("Melissa O'Neill", email = "oneill@pcg-random.org", role = "ctb")
+    )
 Description: The 'base::sample' function uses a slightly biased algorithm for
   creating random integers within a given range. As an alternative the
   algorithm suggested by Daniel Lemire (2018, <arXiv:1805.1094>) is used.
