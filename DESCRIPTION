@@ -5,7 +5,8 @@ Version: 0.0.1
 Authors@R: c(
     person("Ralf", "Stubner", email = "ralf.stubner@daqana.com", role = c("aut", "cre")),
     person("daqana GmbH", role = "cph"),
-    person("Melissa O'Neill", email = "oneill@pcg-random.org", role = "ctb")
+    person("The R Core Team", role = "ctb"),
+    person("Melissa", "O'Neill", email = "oneill@pcg-random.org", role = "ctb")
     )
 Description: The 'base::sample' function uses a slightly biased algorithm for
   creating random integers within a given range. As an alternative the
