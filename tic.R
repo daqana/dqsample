@@ -9,14 +9,13 @@ if (Sys.getenv("id_rsa") != "") {
   get_stage("before_deploy") %>%
     add_step(step_setup_ssh())
 
-  get_stage("deploy") %>%
+  if (Sys.getenv("TRAVIS_R_VERSION") == "release" &&
+      Sys.getenv("TRAVIS_OS_NAME") == "linux"  ) {
+    get_stage("after_success") %>%
+    add_step(covr::codecov())
+
+    get_stage("deploy") %>%
     add_step(step_build_pkgdown()) %>%
-    add_step(step_push_deploy(path = "docs", branch = "gh-pages"))  %>%
-    add_step(step_setup_push_deploy(
-      path = "~/git/drat",
-      branch = "gh-pages",
-      remote = paste0("git@github.com:", gsub("/.*$", "/drat", ci()$get_slug()), ".git")
-    )) %>%
-    add_step(step_add_to_drat()) %>%
-    add_step(step_do_push_deploy(path = "~/git/drat"))
+    add_step(step_push_deploy(path = "docs", branch = "gh-pages"))
+  }
 }
