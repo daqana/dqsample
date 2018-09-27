@@ -28,6 +28,12 @@ sudo: false
 dist: trusty
 cache: packages
 latex: false
+fortran: false
+
+#os
+os:
+  - linux
+  - osx
 
 #env
 env:
