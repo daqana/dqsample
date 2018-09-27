@@ -21,8 +21,19 @@ sample.int(n, size = n, replace = FALSE, prob = NULL)
 \item{n}{a positive number, the number of items to choose from.}
 }
 \description{
-Unbiased Random Samples and Permutations
+These functions provide an unbiased alternative to the corresponding
+  \code{base} functions.
+}
+\examples{
+  # base::sample produces very different amount of odd an even numbers
+  m <- 2/5 * 2^32
+  x <- sample(m, 1000000, replace = TRUE)
+  table(x \%\% 2)
+}
+\references{
+Daniel Lemire (2018), Fast Random Integer Generation in an Interval,
+  \url{https://arxiv.org/abs/1805.10941}.
 }
 \seealso{
-\code{link{sample}} and \code{\link{sample.int}}
+\code{\link[base]{sample}} and \code{\link[base]{sample.int}}
 }

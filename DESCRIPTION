@@ -1,14 +1,16 @@
 Package: dqsample
 Type: Package
-Title: Bias-free alternative to R's 'sample' function
+Title: Bias-Free Alternative to R's 'sample' Function
 Version: 0.0.1
 Author: Ralf Stubner
 Maintainer: Ralf Stubner <ralf.stubner@daqana.com>
-Description: .
+Description: The 'sample' function uses a slightly biased algorithm for
+  creating random integers within a given range. As an alternative the
+  algorithm suggested by Daniel Lemire (2018, <arXiv:1805.1094>) is used.
 License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.18)
 LinkingTo: Rcpp
-Suggests: 
+Suggests:
     testthat
 Encoding: UTF-8
 RoxygenNote: 6.1.0

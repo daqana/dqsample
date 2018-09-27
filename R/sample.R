@@ -1,10 +1,19 @@
 ##' @title Unbiased Random Samples and Permutations
+##' @description These functions provide an unbiased alternative to the corresponding
+##'   \code{base} functions.
 ##' @param x  either a vector of one or more elements from which to choose, or a positive integer.
 ##' @param n  a positive number, the number of items to choose from.
 ##' @param size	 a non-negative integer giving the number of items to choose.
 ##' @param replace	should sampling be with replacement?
 ##' @param prob	 a vector of probability weights for obtaining the elements of the vector being sampled.
-##' @seealso \code{link{sample}} and \code{\link{sample.int}}
+##' @references Daniel Lemire (2018), Fast Random Integer Generation in an Interval,
+##'   \url{https://arxiv.org/abs/1805.10941}.
+##' @examples
+##'   # base::sample produces very different amount of odd an even numbers
+##'   m <- 2/5 * 2^32
+##'   x <- sample(m, 1000000, replace = TRUE)
+##'   table(x %% 2)
+##' @seealso \code{\link[base]{sample}} and \code{\link[base]{sample.int}}
 ##' @export
 sample <- function(x, size, replace = FALSE, prob = NULL) {
     if (length(x) == 1L && is.numeric(x) && is.finite(x) && x >= 1) {
