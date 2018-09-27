@@ -21,6 +21,17 @@
 ##' @title Unbiased Random Samples and Permutations
 ##' @description These functions provide an unbiased alternative to the corresponding
 ##'   \code{base} functions.
+##' @details Currently there is no support for weighted sampling and for long vectors.
+##'   If such situations are encountered, the functions fall back to the equivalent functions
+##'   in \code{base}.
+##' @note The used algorithm needs a random 32bit unsigned integer as input. R does
+##'   not provide an interface for such a random number. Instead \code{unif_rand()}
+##'   returns a random double in \eqn{(0, 1)}. Internally, the result of \code{unif_rand()}
+##'   is multiplied with \eqn{2^{32}} to produce a 32bit unsigned integer. This
+##'   works correctly for the default generator Mersenne-Twister, since that produces
+##'   a 32bit unsigned integer which is then devided by \eqn{2^{32}}. However, other
+##'   generators in R do not follow this pattern so that this procedure might introduce
+##'   a new bias.
 ##' @param x  either a vector of one or more elements from which to choose, or a positive integer.
 ##' @param n  a positive number, the number of items to choose from.
 ##' @param size	 a non-negative integer giving the number of items to choose.

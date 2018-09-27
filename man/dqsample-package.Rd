@@ -19,3 +19,14 @@ Useful links:
 }
 
 }
+\author{
+\strong{Maintainer}: Ralf Stubner \email{ralf.stubner@daqana.com}
+
+Other contributors:
+\itemize{
+  \item daqana GmbH [copyright holder]
+  \item The R Core Team [contributor]
+  \item Melissa O'Neill \email{oneill@pcg-random.org} [contributor]
+}
+
+}
