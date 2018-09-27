@@ -11,5 +11,11 @@ if (Sys.getenv("id_rsa") != "") {
 
   get_stage("deploy") %>%
     add_step(step_build_pkgdown()) %>%
-    add_step(step_push_deploy(path = "docs", branch = "gh-pages"))
+    add_step(step_push_deploy(path = "docs", branch = "gh-pages"))  %>%
+    add_step(step_setup_push_deploy(
+      path = "~/git/drat",
+      remote = paste0("git@github.com:", gsub("/.*$", "/drat", ci()$get_slug()), ".git")
+    )) %>%
+    add_step(step_add_to_drat()) %>%
+    add_step(step_do_push_deploy(path = "~/git/drat"))
 }
