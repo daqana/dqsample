@@ -1,6 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+[![Travis build
+status](https://travis-ci.org/daqana/dqsample.svg?branch=master)](https://travis-ci.org/daqana/dqsample)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/daqana/dqsample?branch=master&svg=true)](https://ci.appveyor.com/project/rstub/dqsample)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/dqsample)](https://cran.r-project.org/package=dqsample)
+[![Coverage
+status](https://codecov.io/gh/daqana/dqsample/branch/master/graph/badge.svg)](https://codecov.io/github/daqana/dqsample?branch=master)
+
 # dqsample
 
 The ‘base::sample’ function uses a slightly biased algorithm for
