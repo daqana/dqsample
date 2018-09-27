@@ -12,10 +12,12 @@ status](https://codecov.io/gh/daqana/dqsample/branch/master/graph/badge.svg)](ht
 
 # dqsample
 
-The ‘base::sample’ function uses a slightly biased algorithm for
+The `base::sample` function uses a slightly biased algorithm for
 creating random integers within a given range. As an alternative the
 algorithm suggested by Daniel Lemire (2018,
-\<[arXiv:1805.1094](https://arxiv.org/abs/1805.10941)\>) is used.
+\<[arXiv:1805.1094](https://arxiv.org/abs/1805.10941)\>) is used. The
+package is motivated by a [thread on
+R-devel](https://stat.ethz.ch/pipermail/r-devel/2018-September/076817.html).
 
 ## Installation
 
@@ -52,3 +54,6 @@ table(x %% 2)
 #>      0      1 
 #> 498957 501043
 ```
+
+This particular sample for the bias was found by [Duncan
+Murdoch](https://stat.ethz.ch/pipermail/r-devel/2018-September/076827.html).
