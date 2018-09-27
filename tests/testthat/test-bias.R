@@ -1,4 +1,4 @@
-context("test-bias")
+context("no-bias")
 
 test_that("unbiased sample.int", {
   set.seed(42)
