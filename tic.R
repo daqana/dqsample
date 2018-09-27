@@ -9,7 +9,7 @@ if (Sys.getenv("id_rsa") != "") {
   get_stage("before_deploy") %>%
     add_step(step_setup_ssh())
 
-  if (Sys.getenv("TRAVIS_R_VERSION") == "release" &&
+  if (Sys.getenv("TRAVIS_R_VERSION_STRING") == "release" &&
       Sys.getenv("TRAVIS_OS_NAME") == "linux"  ) {
     get_stage("after_success") %>%
     add_step(covr::codecov())
