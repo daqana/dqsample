@@ -15,8 +15,11 @@ License: GPL (>= 2)
 Imports: Rcpp (>= 0.12.18)
 LinkingTo: Rcpp
 Suggests:
-    testthat
+    testthat,
+    knitr,
+    rmarkdown
 Encoding: UTF-8
 RoxygenNote: 6.1.0
 URL: https://www.daqana.org/dqsample, https://github.com/daqana/dqsample
 BugReports: https://github.com/daqana/dqsample/issues
+VignetteBuilder: knitr
